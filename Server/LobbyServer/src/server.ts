@@ -1,5 +1,4 @@
 import net, { Server, Socket } from "net";
-import { SessionManager } from "ServerCore/classes/managers/SessionManager";
 import { lobbyConfig } from "./config/config";
 
 import { LobbySession } from "./main/sessions/LobbySession";
@@ -7,6 +6,7 @@ import { BattleSession } from "./main/sessions/BattleSession";
 import { testAllConnections } from "./test/testDbConnection";
 import pools from "./db/database";
 import { onConnection } from "./main/handlers/commonPacketHandler";
+import { SessionManager } from "ServerCore/network/SessionManager";
 
 const server: Server = net.createServer(onConnection);
 /*---------------------------------------------
