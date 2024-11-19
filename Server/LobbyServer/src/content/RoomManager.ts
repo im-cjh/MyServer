@@ -2,7 +2,7 @@ import { create, fromBinary, toBinary } from '@bufbuild/protobuf';
 import { RESPONSE_SUCCESS_CODE } from 'ServerCore/constants';
 
 import { LobbySession } from 'src/main/sessions/LobbySession';
-import { Room } from '../models/Room';
+import { Room } from './Room';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
 import { ePacketId } from 'ServerCore/network/PacketId';
 import { CustomError } from 'ServerCore/utils/error/CustomError';
@@ -108,7 +108,7 @@ createRoomHandler(buffer: Buffer, session: LobbySession) {
     const sendBuffer = PacketUtils.SerializePacket(
       packet,
       L2C_GetRoomListResponseSchema,
-      ePacketId.L2C_GetRoom,
+      ePacketId.L2C_GetRoomListResponse,
       session.getNextSequence(),
     );
     session.send(sendBuffer);
@@ -144,7 +144,7 @@ createRoomHandler(buffer: Buffer, session: LobbySession) {
     const sendBuffer: Buffer = PacketUtils.SerializePacket(
       L2BPacket,
       L2B_CreateGameRoomRequestSchema,
-      ePacketId.L2B_CreateRoom,
+      ePacketId.L2B_CreateGameRoomRequest,
       sesison.getNextSequence(),
     );
 

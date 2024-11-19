@@ -3,10 +3,10 @@ import { SessionManager } from "ServerCore/classes/managers/SessionManager";
 import { lobbyConfig } from "./config/config";
 
 import { LobbySession } from "./main/sessions/LobbySession";
-import { onConnection } from "./events/onConnection";
 import { BattleSession } from "./main/sessions/BattleSession";
 import { testAllConnections } from "./test/testDbConnection";
 import pools from "./db/database";
+import { onConnection } from "./main/handlers/commonPacketHandler";
 
 const server: Server = net.createServer(onConnection);
 /*---------------------------------------------

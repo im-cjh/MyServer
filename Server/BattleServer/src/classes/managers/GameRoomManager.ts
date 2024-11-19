@@ -4,25 +4,11 @@ import { RESPONSE_SUCCESS_CODE } from 'ServerCore/constants';
 import { LobbySession } from 'src/network/LobbySession';
 import { ResponseUtils } from 'src/utils/response/ResponseUtils';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
-import {
-  B2L_CreateRoomSchema,
-  C2L_EnterRoom,
-  C2L_EnterRoomSchema,
-  C2L_GameStartSchema,
-  C2L_LeaveRoom,
-  C2L_LeaveRoomSchema,
-  C2L_RoomList,
-  C2L_RoomListSchema,
-  L2B_CreateRoomSchema,
-  L2C_RoomListSchema,
-} from 'src/protocol/room_pb';
-import { RoomInfoSchema } from 'src/protocol/struct_pb';
 import { ePacketId } from 'ServerCore/network/PacketId';
 import { CustomError } from 'ServerCore/utils/error/CustomError';
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
 import { BattleSession } from 'src/network/BattleSession';
 import { GameRoom } from '../models/GameRoom';
-import { C2B_InitialPacketSchema, C2B_MoveSchema } from 'src/protocol/game_pb';
 import { GamePlayer } from '../models/GamePlayer';
 
 const MAX_ROOMS_SIZE: number = 10000;

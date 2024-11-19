@@ -3,10 +3,11 @@ import { PacketHeader } from 'ServerCore/network/PacketHeader';
 import { Session } from 'ServerCore/network/Session';
 import { CustomError } from 'ServerCore/utils/error/CustomError';
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
-import battleHandlerMappings from 'src/main/handlers/battle/battleServerPacketHandler';
-import handlerMappings from 'src/main/handlers/user/clientPacketHandler';
+import battleHandlerMappings from 'src/main/handlers/battleServerPacketHandler';
+import handlerMappings from 'src/main/handlers/clientPacketHandler';
 import { battleSessionManager } from 'src/server';
 import { handleError } from 'src/utils/error/errorHandler';
+
 
 export class BattleSession extends Session {
   constructor(socket: Socket) {

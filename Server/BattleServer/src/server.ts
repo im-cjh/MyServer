@@ -6,10 +6,6 @@ import { BattleSession } from './network/BattleSession';
 import { LobbySession } from './network/LobbySession';
 import { battleConfig } from './config/config';
 import initServer from './init';
-import { B2L_InitialPacket, B2L_InitialPacketSchema } from './protocol/server_pb';
-import { create } from '@bufbuild/protobuf';
-import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
-import { ePacketId } from 'ServerCore/network/PacketId';
 
 const server: Server = net.createServer(onConnection);
 /*---------------------------------------------

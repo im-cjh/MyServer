@@ -6,7 +6,7 @@ import { CustomError } from 'ServerCore/utils/error/CustomError';
 
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
 import { Socket } from 'net';
-import handlerMappings from 'src/main/handlers/user/clientPacketHandler';
+import handlerMappings from 'src/main/handlers/clientPacketHandler';
 import { handleError } from 'src/utils/error/errorHandler';
 import { CharacterType } from 'src/protocol/enum_pb';
 
