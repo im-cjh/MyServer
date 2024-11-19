@@ -6,7 +6,7 @@ import mysql, {
 } from "mysql2/promise";
 import { lobbyConfig } from "../config/config";
 
-import { DbConfig } from "ServerCore/classes/interfaces/DbConfig";
+import { DbConfig } from "ServerCore/config/DbConfig";
 import { Utils } from "ServerCore/utils/Utils";
 
 const { database } = lobbyConfig;

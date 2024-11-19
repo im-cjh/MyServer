@@ -1,12 +1,12 @@
 import { create, fromBinary, toBinary } from '@bufbuild/protobuf';
-import { RESPONSE_SUCCESS_CODE } from 'ServerCore/constants';
 import { ePacketId } from 'ServerCore/network/PacketId';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
 import { BattleSession } from 'src/network/BattleSession';
 import { LobbySession } from 'src/network/LobbySession';
-import { ResponseUtils } from 'src/utils/response/ResponseUtils';
 import { GamePlayer } from './GamePlayer';
-import { B2C_GameStartNotificationSchema } from 'src/protocol/room_pb';
+import { B2C_GameStartNotification, B2C_GameStartNotificationSchema, B2C_JoinRoomRequestSchema } from 'src/protocol/room_pb';
+import { RESPONSE_SUCCESS_CODE } from 'ServerCore/config/config';
+import { UserData } from 'src/protocol/struct_pb';
 
 export class GameRoom {
   /*---------------------------------------------
@@ -45,29 +45,24 @@ export class GameRoom {
     this.users.push(player);
     console.log(`유저가 방에 입장했습니다. 현재 인원: ${this.users.length}/${this.maxPlayerCount}`);
 
-    // 3. 해당 유저에게 B2C_EnterRoomMe 패킷 전송
-    const userInfo = create(UserInfoSchema, {
-      userId: player.session.getId(),
-      nickname: player.session.getNickname(),
+    // 3. 해당 유저에게 B2C_JoinRoomResponse 패킷 전송
+    const enterRoomPacket = create(B2C_JoinRoomRequestSchema, {
+      isSuccess: true
     });
 
-    const enterRoomPacket = create(B2C_EnterRoomSchema, {
-      meta: ResponseUtils.createMetaResponse(RESPONSE_SUCCESS_CODE),
-    });
-
-    const enterRoomBuffer = PacketUtils.SerializePacket(enterRoomPacket, B2C_EnterRoomSchema, ePacketId.B2C_Enter, player.session.getNextSequence());
+    const enterRoomBuffer: Buffer = PacketUtils.SerializePacket(enterRoomPacket, B2C_JoinRoomRequestSchema, ePacketId.B2C_JoinRoomResponse, player.session.getNextSequence());
     player.session.send(enterRoomBuffer);
 
     // 4. 모든 인원이 들어왔다면 B2C_GameStart 패킷 전송
     if (this.users.length === this.maxPlayerCount) {
       console.log('모든 유저가 입장하였습니다. 게임을 시작합니다.');
 
-      const playersInfo = this.users.map((user) => user.playerInfo);
-      const gameStartPacket = create(B2C_GameStartNotificationSchema, {
-        players: playersInfo,
+      const userDatas: UserData[] = this.users.map((user) => user.userData);
+      const gameStartPacket: B2C_GameStartNotification = create(B2C_GameStartNotificationSchema, {
+        userDatas: userDatas
       });
 
-      const gameStartBuffer = PacketUtils.SerializePacket(gameStartPacket, B2C_GameStartNotificationSchema, ePacketId.B2C_GameStart, player.session.getNextSequence());
+      const gameStartBuffer: Buffer = PacketUtils.SerializePacket(gameStartPacket, B2C_GameStartNotificationSchema, ePacketId.B2C_GameStartNotification, player.session.getNextSequence());
 
       this.broadcast(gameStartBuffer);
     }

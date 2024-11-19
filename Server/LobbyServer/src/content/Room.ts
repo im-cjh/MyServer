@@ -6,6 +6,7 @@ import { LobbySession } from 'src/main/sessions/LobbySession';
 import { CharacterType, RoomStateType } from 'src/protocol/enum_pb';
 import { L2C_JoinRoomNotification, L2C_JoinRoomNotificationSchema, L2C_JoinRoomResponse, L2C_JoinRoomResponseSchema } from 'src/protocol/room_pb';
 import { CharacterDataSchema, RoomDataSchema, UserDataSchema } from 'src/protocol/struct_pb';
+import { handleError } from 'src/utils/error/errorHandler';
 
 export class Room {
   /*---------------------------------------------

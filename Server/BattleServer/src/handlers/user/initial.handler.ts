@@ -1,15 +1,8 @@
 import { Socket } from 'net';
-import { LobbySession } from 'src/network/LobbySession';
 import { CustomError } from 'ServerCore/utils/error/CustomError';
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
-import { RESPONSE_SUCCESS_CODE } from 'ServerCore/constants';
-import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
-import { ePacketId } from 'ServerCore/network/PacketId';
 import { sessionManager } from 'src/server';
-import { battleConfig } from 'src/config/config';
-
-import { ResponseUtils } from 'src/utils/response/ResponseUtils';
-import { create, fromBinary } from '@bufbuild/protobuf';
+import { fromBinary } from '@bufbuild/protobuf';
 import { gameRoomManager } from 'src/classes/managers/GameRoomManager';
 import { BattleSession } from 'src/network/BattleSession';
 import { GamePlayer } from 'src/classes/models/GamePlayer';
@@ -54,7 +47,7 @@ const initialHandler = async (buffer: Buffer, socket: Socket) => {
 
   sessionManager.getSessionOrNull(packet.userData.id)?.setNickname(packet.userData.name);
 
-  const player = new GamePlayer(session, packet.PlayerInfo);
+  const player = new GamePlayer(session, packet.userData);
   gameRoomManager.enterRoomHandler(packet.roomId, player);
 };
 

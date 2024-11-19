@@ -1,8 +1,5 @@
 import { create, fromBinary, toBinary } from '@bufbuild/protobuf';
-import { RESPONSE_SUCCESS_CODE } from 'ServerCore/constants';
-
 import { LobbySession } from 'src/network/LobbySession';
-import { ResponseUtils } from 'src/utils/response/ResponseUtils';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
 import { ePacketId } from 'ServerCore/network/PacketId';
 import { CustomError } from 'ServerCore/utils/error/CustomError';
@@ -10,6 +7,7 @@ import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
 import { BattleSession } from 'src/network/BattleSession';
 import { GameRoom } from '../models/GameRoom';
 import { GamePlayer } from '../models/GamePlayer';
+import { B2L_CreateGameRoomResponeSchema, L2B_CreateGameRoomRequestSchema } from 'src/protocol/room_pb';
 
 const MAX_ROOMS_SIZE: number = 10000;
 
@@ -63,7 +61,7 @@ class GameRoomManager {
   public createGameRoomHandler(buffer: Buffer, session: LobbySession | BattleSession) {
     console.log('createGameRoom', session.getId());
     console.log('--------------------');
-    const L2B_CreateRoomPacket = fromBinary(L2B_CreateRoomSchema, buffer);
+    const L2B_CreateRoomPacket = fromBinary(L2B_CreateGameRoomRequestSchema, buffer);
     const roomId: number = L2B_CreateRoomPacket.roomId;
     const maxPlayerCount = L2B_CreateRoomPacket.maxPlayers;
     //roomdId가 이미 존재하는지 검증
@@ -84,12 +82,12 @@ class GameRoomManager {
 
     console.log('방 생성', L2B_CreateRoomPacket.roomId);
 
-    const B2L_CreateRoomPacket = create(B2L_CreateRoomSchema, {
+    const B2L_CreateRoomPacket = create(B2L_CreateGameRoomResponeSchema, {
       isCreated: true,
       roomId: L2B_CreateRoomPacket.roomId,
     });
 
-    const sendBuffer: Buffer = PacketUtils.SerializePacket(B2L_CreateRoomPacket, B2L_CreateRoomSchema, ePacketId.B2L_CreateRoom, session.getNextSequence());
+    const sendBuffer: Buffer = PacketUtils.SerializePacket(B2L_CreateRoomPacket, B2L_CreateGameRoomResponeSchema, ePacketId.B2L_CreateGameRoomRespone, session.getNextSequence());
     session.send(sendBuffer);
     console.log('send B2L_CreateRoom');
   }
@@ -100,15 +98,15 @@ class GameRoomManager {
   public moveHandler(buffer: Buffer, session: BattleSession) {
     //console.log('moveHandler');
 
-    const packet = fromBinary(C2B_MoveSchema, buffer);
+    // const packet = fromBinary(C2B_MoveSchema, buffer);
 
-    const room = this.rooms.get(packet.roomId);
-    if (room == undefined) {
-      console.log('유효하지 않은 roomId');
-      throw new CustomError(ErrorCodes.SOCKET_ERROR, '유효하지 않은 roomId');
-    }
+    // const room = this.rooms.get(packet.roomId);
+    // if (room == undefined) {
+    //   console.log('유효하지 않은 roomId');
+    //   throw new CustomError(ErrorCodes.SOCKET_ERROR, '유효하지 않은 roomId');
+    // }
 
-    room.handleMove(buffer);
+    // room.handleMove(buffer);
   }
   /*---------------------------------------------
     [방 ID 해제]

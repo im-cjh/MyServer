@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file room.proto.
  */
 export const file_room: GenFile = /*@__PURE__*/
-  fileDesc("Cgpyb29tLnByb3RvEghQcm90b2NvbCI5ChVDMkxfQ3JlYXRlUm9vbVJlcXVlc3QSDAoEbmFtZRgBIAEoCRISCgptYXhVc2VyTnVtGAIgASgFIk0KFkwyQ19DcmVhdGVSb29tUmVzcG9uc2USEQoJaXNTdWNjZXNzGAEgASgIEiAKBHJvb20YAiABKAsyEi5Qcm90b2NvbC5Sb29tRGF0YSI/ChlMMkJfQ3JlYXRlR2FtZVJvb21SZXF1ZXN0Eg4KBnJvb21JZBgBIAEoBRISCgptYXhQbGF5ZXJzGAIgASgFIj4KGUIyTF9DcmVhdGVHYW1lUm9vbVJlc3BvbmUSEQoJaXNDcmVhdGVkGAEgASgIEg4KBnJvb21JZBgCIAEoBSIvCg1DMkxfR2FtZVN0YXJ0Eg4KBnVzZXJJZBgBIAEoCRIOCgZyb29tSWQYAiABKAUiOwoNTDJDX0dhbWVTdGFydBIMCgRob3N0GAEgASgJEgwKBHBvcnQYAiABKAUSDgoGcm9vbUlkGAMgASgFIjgKFEwyQl9HYW1lU3RhcnRSZXF1ZXN0EgwKBG5hbWUYASABKAkSEgoKbWF4VXNlck51bRgCIAEoBSIbChlCMkNfR2FtZVN0YXJ0Tm90aWZpY2F0aW9uIhgKFkMyTF9HZXRSb29tTGlzdFJlcXVlc3QiPAoXTDJDX0dldFJvb21MaXN0UmVzcG9uc2USIQoFcm9vbXMYASADKAsyEi5Qcm90b2NvbC5Sb29tRGF0YSIlChNDMkxfSm9pblJvb21SZXF1ZXN0Eg4KBnJvb21JZBgBIAEoBSJPChRMMkNfSm9pblJvb21SZXNwb25zZRIRCglpc1N1Y2Nlc3MYASABKAgSJAoIcm9vbUluZm8YAiABKAsyEi5Qcm90b2NvbC5Sb29tRGF0YSJAChhMMkNfSm9pblJvb21Ob3RpZmljYXRpb24SJAoIam9pblVzZXIYASABKAsyEi5Qcm90b2NvbC5Vc2VyRGF0YSImChRDMkxfTGVhdmVSb29tUmVxdWVzdBIOCgZyb29tSWQYASABKAUiKgoVTDJDX0xlYXZlUm9vbVJlc3BvbnNlEhEKCWlzU3VjY2VzcxgBIAEoCCIrChlMMkNfTGVhdmVSb29tTm90aWZpY2F0aW9uEg4KBnVzZXJJZBgBIAEoCWIGcHJvdG8z", [file_struct]);
+  fileDesc("Cgpyb29tLnByb3RvEghQcm90b2NvbCI5ChVDMkxfQ3JlYXRlUm9vbVJlcXVlc3QSDAoEbmFtZRgBIAEoCRISCgptYXhVc2VyTnVtGAIgASgFIk0KFkwyQ19DcmVhdGVSb29tUmVzcG9uc2USEQoJaXNTdWNjZXNzGAEgASgIEiAKBHJvb20YAiABKAsyEi5Qcm90b2NvbC5Sb29tRGF0YSI/ChlMMkJfQ3JlYXRlR2FtZVJvb21SZXF1ZXN0Eg4KBnJvb21JZBgBIAEoBRISCgptYXhQbGF5ZXJzGAIgASgFIj4KGUIyTF9DcmVhdGVHYW1lUm9vbVJlc3BvbmUSEQoJaXNDcmVhdGVkGAEgASgIEg4KBnJvb21JZBgCIAEoBSIvCg1DMkxfR2FtZVN0YXJ0Eg4KBnVzZXJJZBgBIAEoCRIOCgZyb29tSWQYAiABKAUiOwoNTDJDX0dhbWVTdGFydBIMCgRob3N0GAEgASgJEgwKBHBvcnQYAiABKAUSDgoGcm9vbUlkGAMgASgFIjgKFEwyQl9HYW1lU3RhcnRSZXF1ZXN0EgwKBG5hbWUYASABKAkSEgoKbWF4VXNlck51bRgCIAEoBSJCChlCMkNfR2FtZVN0YXJ0Tm90aWZpY2F0aW9uEiUKCXVzZXJEYXRhcxgBIAMoCzISLlByb3RvY29sLlVzZXJEYXRhIhgKFkMyTF9HZXRSb29tTGlzdFJlcXVlc3QiPAoXTDJDX0dldFJvb21MaXN0UmVzcG9uc2USIQoFcm9vbXMYASADKAsyEi5Qcm90b2NvbC5Sb29tRGF0YSIlChNDMkxfSm9pblJvb21SZXF1ZXN0Eg4KBnJvb21JZBgBIAEoBSJPChRMMkNfSm9pblJvb21SZXNwb25zZRIRCglpc1N1Y2Nlc3MYASABKAgSJAoIcm9vbUluZm8YAiABKAsyEi5Qcm90b2NvbC5Sb29tRGF0YSJAChhMMkNfSm9pblJvb21Ob3RpZmljYXRpb24SJAoIam9pblVzZXIYASABKAsyEi5Qcm90b2NvbC5Vc2VyRGF0YSIoChNCMkNfSm9pblJvb21SZXF1ZXN0EhEKCWlzU3VjY2VzcxgBIAEoCCImChRDMkxfTGVhdmVSb29tUmVxdWVzdBIOCgZyb29tSWQYASABKAUiKgoVTDJDX0xlYXZlUm9vbVJlc3BvbnNlEhEKCWlzU3VjY2VzcxgBIAEoCCIrChlMMkNfTGVhdmVSb29tTm90aWZpY2F0aW9uEg4KBnVzZXJJZBgBIAEoCWIGcHJvdG8z", [file_struct]);
 
 /**
  * @generated from message Protocol.C2L_CreateRoomRequest
@@ -187,6 +187,12 @@ export const L2B_GameStartRequestSchema: GenMessage<L2B_GameStartRequest> = /*@_
  * @generated from message Protocol.B2C_GameStartNotification
  */
 export type B2C_GameStartNotification = Message<"Protocol.B2C_GameStartNotification"> & {
+  /**
+   * UserData를 wrapping한 새로운 struct 필요할 듯
+   *
+   * @generated from field: repeated Protocol.UserData userDatas = 1;
+   */
+  userDatas: UserData[];
 };
 
 /**
@@ -285,6 +291,23 @@ export const L2C_JoinRoomNotificationSchema: GenMessage<L2C_JoinRoomNotification
   messageDesc(file_room, 12);
 
 /**
+ * @generated from message Protocol.B2C_JoinRoomRequest
+ */
+export type B2C_JoinRoomRequest = Message<"Protocol.B2C_JoinRoomRequest"> & {
+  /**
+   * @generated from field: bool isSuccess = 1;
+   */
+  isSuccess: boolean;
+};
+
+/**
+ * Describes the message Protocol.B2C_JoinRoomRequest.
+ * Use `create(B2C_JoinRoomRequestSchema)` to create a new message.
+ */
+export const B2C_JoinRoomRequestSchema: GenMessage<B2C_JoinRoomRequest> = /*@__PURE__*/
+  messageDesc(file_room, 13);
+
+/**
  * @generated from message Protocol.C2L_LeaveRoomRequest
  */
 export type C2L_LeaveRoomRequest = Message<"Protocol.C2L_LeaveRoomRequest"> & {
@@ -299,7 +322,7 @@ export type C2L_LeaveRoomRequest = Message<"Protocol.C2L_LeaveRoomRequest"> & {
  * Use `create(C2L_LeaveRoomRequestSchema)` to create a new message.
  */
 export const C2L_LeaveRoomRequestSchema: GenMessage<C2L_LeaveRoomRequest> = /*@__PURE__*/
-  messageDesc(file_room, 13);
+  messageDesc(file_room, 14);
 
 /**
  * @generated from message Protocol.L2C_LeaveRoomResponse
@@ -316,7 +339,7 @@ export type L2C_LeaveRoomResponse = Message<"Protocol.L2C_LeaveRoomResponse"> & 
  * Use `create(L2C_LeaveRoomResponseSchema)` to create a new message.
  */
 export const L2C_LeaveRoomResponseSchema: GenMessage<L2C_LeaveRoomResponse> = /*@__PURE__*/
-  messageDesc(file_room, 14);
+  messageDesc(file_room, 15);
 
 /**
  * @generated from message Protocol.L2C_LeaveRoomNotification
@@ -333,5 +356,5 @@ export type L2C_LeaveRoomNotification = Message<"Protocol.L2C_LeaveRoomNotificat
  * Use `create(L2C_LeaveRoomNotificationSchema)` to create a new message.
  */
 export const L2C_LeaveRoomNotificationSchema: GenMessage<L2C_LeaveRoomNotification> = /*@__PURE__*/
-  messageDesc(file_room, 15);
+  messageDesc(file_room, 16);
 

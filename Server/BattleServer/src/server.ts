@@ -1,11 +1,11 @@
 import net, { Server, Socket } from 'net';
 import { v4 as uuidv4 } from 'uuid';
-import { SessionManager } from 'ServerCore/classes/managers/SessionManager';
 import { onConnection } from './events/onConnection';
 import { BattleSession } from './network/BattleSession';
 import { LobbySession } from './network/LobbySession';
 import { battleConfig } from './config/config';
 import initServer from './init';
+import { SessionManager } from 'ServerCore/network/SessionManager';
 
 const server: Server = net.createServer(onConnection);
 /*---------------------------------------------
