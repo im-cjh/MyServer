@@ -1,8 +1,7 @@
 import { create, toBinary } from '@bufbuild/protobuf';
-import { RESPONSE_SUCCESS_CODE } from 'ServerCore/constants';
 import { ePacketId } from 'ServerCore/network/PacketId';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
-import { eRoomStateId } from 'src/constants/roomState';
+import { eRoomStateId } from 'src/config/roomState';
 import { LobbySession } from 'src/main/sessions/LobbySession';
 import { CharacterType, RoomStateType } from 'src/protocol/enum_pb';
 import { L2C_JoinRoomNotification, L2C_JoinRoomNotificationSchema, L2C_JoinRoomResponse, L2C_JoinRoomResponseSchema } from 'src/protocol/room_pb';

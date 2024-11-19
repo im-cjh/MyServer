@@ -1,5 +1,5 @@
 import { Socket } from "net";
-import { Session } from "../../network/Session";
+import { Session } from "./Session";
 
 type SessionFactory<T extends Session> = new (socket: Socket) => T;
 /*---------------------------------------------

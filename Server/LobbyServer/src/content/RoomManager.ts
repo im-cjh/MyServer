@@ -1,6 +1,4 @@
 import { create, fromBinary, toBinary } from '@bufbuild/protobuf';
-import { RESPONSE_SUCCESS_CODE } from 'ServerCore/constants';
-
 import { LobbySession } from 'src/main/sessions/LobbySession';
 import { Room } from './Room';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';

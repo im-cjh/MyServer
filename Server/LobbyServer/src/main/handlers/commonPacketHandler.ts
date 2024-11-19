@@ -5,7 +5,6 @@ import { CustomError } from 'ServerCore/utils/error/CustomError';
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
 import { lobbyConfig } from 'src/config/config';
 import { UserDb } from 'src/db/user/user.db';
-import { RESPONSE_SUCCESS_CODE } from 'ServerCore/constants';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
 import { ePacketId } from 'ServerCore/network/PacketId';
 import { battleSessionManager, sessionManager } from 'src/server';
