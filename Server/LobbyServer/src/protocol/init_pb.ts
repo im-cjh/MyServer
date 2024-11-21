@@ -4,7 +4,7 @@
 
 import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
 import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
-import type { UserData } from "./struct_pb";
+import type { GamePlayerData } from "./struct_pb";
 import { file_struct } from "./struct_pb";
 import type { Message } from "@bufbuild/protobuf";
 
@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file init.proto.
  */
 export const file_init: GenFile = /*@__PURE__*/
-  fileDesc("Cgppbml0LnByb3RvEghQcm90b2NvbCIdCghMMkNfSW5pdBIRCglpc1N1Y2Nlc3MYASABKAgiLAoIQzJMX0luaXQSDgoGdXNlcklkGAEgASgJEhAKCG5pY2tuYW1lGAIgASgJIkAKCEMyQl9Jbml0EiQKCHVzZXJEYXRhGAEgASgLMhIuUHJvdG9jb2wuVXNlckRhdGESDgoGcm9vbUlkGAIgASgFIhwKCEIyTF9Jbml0EhAKCHNlcnZlcklkGAEgASgJYgZwcm90bzM", [file_struct]);
+  fileDesc("Cgppbml0LnByb3RvEghQcm90b2NvbCIdCghMMkNfSW5pdBIRCglpc1N1Y2Nlc3MYASABKAgiLAoIQzJMX0luaXQSDgoGdXNlcklkGAEgASgJEhAKCG5pY2tuYW1lGAIgASgJIkgKCEMyQl9Jbml0EiwKCnBsYXllckRhdGEYASABKAsyGC5Qcm90b2NvbC5HYW1lUGxheWVyRGF0YRIOCgZyb29tSWQYAiABKAUiHAoIQjJMX0luaXQSEAoIc2VydmVySWQYASABKAliBnByb3RvMw", [file_struct]);
 
 /**
  * @generated from message Protocol.L2C_Init
@@ -60,9 +60,9 @@ export const C2L_InitSchema: GenMessage<C2L_Init> = /*@__PURE__*/
  */
 export type C2B_Init = Message<"Protocol.C2B_Init"> & {
   /**
-   * @generated from field: Protocol.UserData userData = 1;
+   * @generated from field: Protocol.GamePlayerData playerData = 1;
    */
-  userData?: UserData;
+  playerData?: GamePlayerData;
 
   /**
    * @generated from field: int32 roomId = 2;

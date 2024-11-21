@@ -7,11 +7,10 @@ import { CustomError } from 'ServerCore/utils/error/CustomError';
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
 import { battleConfig } from 'src/config/config';
-import lobbyHandlerMappings from 'src/handlers/lobby';
 
 import { B2L_InitialPacket, B2L_InitialPacketSchema } from 'src/protocol/server_pb';
-import { handleError } from 'src/utils/error/errorHandler';
-import { v4 as uuidv4 } from 'uuid';
+import lobbyHandlerMappings from '../handlers/lobbyServerPacketHandler';
+import { handleError } from 'src/utils/errorHandler';
 
 export class LobbySession extends Session {
   constructor(socket: Socket) {

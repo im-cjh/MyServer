@@ -9,7 +9,7 @@ import { enumDesc, fileDesc } from "@bufbuild/protobuf/codegenv1";
  * Describes the file enum.proto.
  */
 export const file_enum: GenFile = /*@__PURE__*/
-  fileDesc("CgplbnVtLnByb3RvEghQcm90b2NvbCozCg1Sb29tU3RhdGVUeXBlEggKBFdBSVQQABILCgdQUkVQQVJFEAESCwoHSU5BR0FNRRACKjkKCk9iamVjdFR5cGUSCQoFVE9XRVIQABIKCgZQTEFZRVIQARILCgdNT05TVEVSEAISBwoDRU5WEAMqMgoIQ2FyZFR5cGUSEAoMQVRUQUNLX1RPV0VSEAASFAoQU1RSX0FUVEFDS19UT1dFUhABKoABCg1DaGFyYWN0ZXJUeXBlEhEKDU5vbmVDaGFyYWN0ZXIQABIHCgNSZWQQARIJCgVTaGFyaxADEgoKBk1hbGFuZxAFEgoKBkZyb2dneRAHEgsKB0JvbWJNYW4QCBILCgdTbG93TWFuEAkSCAoETWFzaxAKEgwKCERpbm9zb3VyEAxiBnByb3RvMw");
+  fileDesc("CgplbnVtLnByb3RvEghQcm90b2NvbCozCg1Sb29tU3RhdGVUeXBlEggKBFdBSVQQABILCgdQUkVQQVJFEAESCwoHSU5BR0FNRRACKkkKCk9iamVjdFR5cGUSCQoFVE9XRVIQABIKCgZQTEFZRVIQARILCgdNT05TVEVSEAISDgoKUFJPSkVDVElMRRADEgcKA0VOVhAEKjIKCENhcmRUeXBlEhAKDEFUVEFDS19UT1dFUhAAEhQKEFNUUl9BVFRBQ0tfVE9XRVIQASqAAQoNQ2hhcmFjdGVyVHlwZRIRCg1Ob25lQ2hhcmFjdGVyEAASBwoDUmVkEAESCQoFU2hhcmsQAxIKCgZNYWxhbmcQBRIKCgZGcm9nZ3kQBxILCgdCb21iTWFuEAgSCwoHU2xvd01hbhAJEggKBE1hc2sQChIMCghEaW5vc291chAMYgZwcm90bzM");
 
 /**
  * 변경 주의(클라 의존성)
@@ -59,9 +59,14 @@ export enum ObjectType {
   MONSTER = 2,
 
   /**
-   * @generated from enum value: ENV = 3;
+   * @generated from enum value: PROJECTILE = 3;
    */
-  ENV = 3,
+  PROJECTILE = 3,
+
+  /**
+   * @generated from enum value: ENV = 4;
+   */
+  ENV = 4,
 }
 
 /**

@@ -1,13 +1,15 @@
 import { Socket } from 'net';
 import { create } from '@bufbuild/protobuf';
-import { LobbySession } from 'src/network/LobbySession';
+import { LobbySession } from 'src/main/sessions/LobbySession';
 
-import { ResponseUtils } from '../response/ResponseUtils';
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
 import { ePacketId } from 'ServerCore/network/PacketId';
-import { S2C_Error, S2C_ErrorSchema } from 'src/protocol/server_pb';
-import { BattleSession } from 'src/network/BattleSession';
+import { BattleSession } from 'src/main/sessions/BattleSession';
+import { ErrorData, ErrorDataSchema } from 'src/protocol/struct_pb';
+import { ResponseUtils } from './responseUtils';
+
+
 
 export const handleError = (session: LobbySession | BattleSession, error: any) => {
   let responseCode: number;
@@ -22,7 +24,12 @@ export const handleError = (session: LobbySession | BattleSession, error: any) =
     console.log(error.stack.split('\n')[1]);
   }
 
-  const packet: S2C_Error = ResponseUtils.createErrorResponse(responseCode, message);
-  const sendBuffer: Buffer = PacketUtils.SerializePacket<S2C_Error>(packet, S2C_ErrorSchema, ePacketId.S2C_Error, session.getNextSequence());
+  const packet: ErrorData = ResponseUtils.createErrorResponse(responseCode, message);
+  const sendBuffer: Buffer = PacketUtils.SerializePacket<ErrorData>(
+    packet,
+    ErrorDataSchema,
+    ePacketId.S2C_Error,
+    session.getNextSequence(),
+  );
   session.send(sendBuffer);
 };

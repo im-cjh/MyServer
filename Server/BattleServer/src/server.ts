@@ -1,11 +1,10 @@
 import net, { Server, Socket } from 'net';
 import { v4 as uuidv4 } from 'uuid';
-import { onConnection } from './events/onConnection';
-import { BattleSession } from './network/BattleSession';
-import { LobbySession } from './network/LobbySession';
+import { BattleSession } from './main/sessions/BattleSession';
+import { LobbySession } from './main/sessions/LobbySession';
 import { battleConfig } from './config/config';
-import initServer from './init';
 import { SessionManager } from 'ServerCore/network/SessionManager';
+import { onConnection } from './main/handlers/commonPacketHandler';
 
 const server: Server = net.createServer(onConnection);
 /*---------------------------------------------
@@ -16,6 +15,16 @@ export const sessionManager: SessionManager<BattleSession> = new SessionManager(
 
 export let lobbySession: LobbySession = new LobbySession(new Socket());
 lobbySession.connectLobbyServer();
+
+const initServer = async () => {
+  try {
+    //await testAllConnections(pools);
+    // 다음 작업
+  } catch (error: any) {
+    console.error(error.message);
+    process.exit(1); // 오류 발생 시 프로세스 종료
+  }
+};
 
 initServer()
   .then(() => {

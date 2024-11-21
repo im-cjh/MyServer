@@ -1,14 +1,12 @@
 import { PacketHeader } from 'ServerCore/network/PacketHeader';
 import { Session } from 'ServerCore/network/Session';
-import { sessionManager } from 'src/server';
-
 import { CustomError } from 'ServerCore/utils/error/CustomError';
-
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
 import { Socket } from 'net';
 import handlerMappings from 'src/main/handlers/clientPacketHandler';
 import { handleError } from 'src/utils/error/errorHandler';
 import { CharacterType } from 'src/protocol/enum_pb';
+import { sessionManager } from 'src/server';
 
 export class LobbySession extends Session {
   private nickname: string = 'tmpName';

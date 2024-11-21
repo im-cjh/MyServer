@@ -3,8 +3,8 @@ import { PacketHeader } from 'ServerCore/network/PacketHeader';
 import { Session } from 'ServerCore/network/Session';
 import { CustomError } from 'ServerCore/utils/error/CustomError';
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
-import handlerMappings from 'src/handlers/user';
-import { handleError } from 'src/utils/error/errorHandler';
+import handlerMappings from '../handlers/clientPacketHandler';
+import { handleError } from 'src/utils/errorHandler';
 
 export class BattleSession extends Session {
   private nickname: string = 'tmpName';

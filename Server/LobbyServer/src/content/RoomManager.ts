@@ -7,7 +7,6 @@ import { CustomError } from 'ServerCore/utils/error/CustomError';
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
 import { battleSessionManager } from 'src/server';
 import { BattleSession } from 'src/main/sessions/BattleSession';
-import { send } from 'process';
 import { lobbyConfig } from 'src/config/config';
 import { B2L_CreateGameRoomResponeSchema, C2L_CreateRoomRequest, C2L_CreateRoomRequestSchema, C2L_GameStartSchema, C2L_JoinRoomRequest, C2L_JoinRoomRequestSchema, C2L_LeaveRoomRequest, C2L_LeaveRoomRequestSchema, L2B_CreateGameRoomRequestSchema, L2C_CreateRoomResponse, L2C_CreateRoomResponseSchema, L2C_GameStartSchema, L2C_GetRoomListResponseSchema } from 'src/protocol/room_pb';
 import { RoomDataSchema } from 'src/protocol/struct_pb';
@@ -26,7 +25,7 @@ class RoomManager {
   private availableRoomIds = Array.from({ length: MAX_ROOMS_SIZE }, (_, i) => i + 1);
 
   constructor() {
-    let tmpRoomId: number | undefined = this.availableRoomIds.shift();
+    let tmpRoomId = this.availableRoomIds.shift();
     if (!tmpRoomId) tmpRoomId = 0;
     this.rooms.set(tmpRoomId, new Room(tmpRoomId, '정현의 방', 2));
   }
@@ -50,9 +49,11 @@ createRoomHandler(buffer: Buffer, session: LobbySession) {
     room: create(RoomDataSchema, {
       id: roomId, 
       name: packet.name,
-
     })
-  })
+  });
+
+  const sendBuffer: Buffer = PacketUtils.SerializePacket(response, L2C_CreateRoomResponseSchema, ePacketId.L2C_CreateRoomResponse, 0);
+  session.send(sendBuffer);
 }
 
   /*---------------------------------------------

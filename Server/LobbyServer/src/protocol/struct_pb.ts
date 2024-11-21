@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file struct.proto.
  */
 export const file_struct: GenFile = /*@__PURE__*/
-  fileDesc("CgxzdHJ1Y3QucHJvdG8SCFByb3RvY29sIiUKCEJhc2VEYXRhEgoKAmhwGAEgASgFEg0KBW1heEhwGAIgASgFIlYKCVRvd2VyRGF0YRIPCgd0b3dlcklkGAEgASgFEhMKC3Rvd2VyTnVtYmVyGAIgASgFEiMKCHRvd2VyUG9zGAMgASgLMhEuUHJvdG9jb2wuUG9zSW5mbyJtCgtNb25zdGVyRGF0YRIRCgltb25zdGVySWQYASABKAUSFQoNbW9uc3Rlck51bWJlchgCIAEoBRINCgVsZXZlbBgDIAEoBRIlCgptb25zdGVyUG9zGAQgASgLMhEuUHJvdG9jb2wuUG9zSW5mbyJQCghVc2VyRGF0YRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEioKCWNoYXJhY3RlchgDIAEoCzIXLlByb3RvY29sLkNoYXJhY3RlckRhdGEilAEKCFJvb21EYXRhEgoKAmlkGAEgASgFEg8KB293bmVySWQYAiABKAkSDAoEbmFtZRgDIAEoCRISCgptYXhVc2VyTnVtGAQgASgFEiYKBXN0YXRlGAUgASgOMhcuUHJvdG9jb2wuUm9vbVN0YXRlVHlwZRIhCgV1c2VycxgGIAMoCzISLlByb3RvY29sLlVzZXJEYXRhIj8KDUNoYXJhY3RlckRhdGESLgoNY2hhcmFjdGVyVHlwZRgBIAEoDjIXLlByb3RvY29sLkNoYXJhY3RlclR5cGUiHwoHUG9zSW5mbxIJCgF4GAEgASgCEgkKAXkYAiABKAIiMgoJRXJyb3JEYXRhEhQKDHJlc3BvbnNlQ29kZRgBIAEoBRIPCgdtZXNzYWdlGAIgASgJYgZwcm90bzM", [file_enum]);
+  fileDesc("CgxzdHJ1Y3QucHJvdG8SCFByb3RvY29sIiUKCEJhc2VEYXRhEgoKAmhwGAEgASgFEg0KBW1heEhwGAIgASgFIlYKCVRvd2VyRGF0YRIPCgd0b3dlcklkGAEgASgFEhMKC3Rvd2VyTnVtYmVyGAIgASgFEiMKCHRvd2VyUG9zGAMgASgLMhEuUHJvdG9jb2wuUG9zSW5mbyJtCgtNb25zdGVyRGF0YRIRCgltb25zdGVySWQYASABKAUSFQoNbW9uc3Rlck51bWJlchgCIAEoBRINCgVsZXZlbBgDIAEoBRIlCgptb25zdGVyUG9zGAQgASgLMhEuUHJvdG9jb2wuUG9zSW5mbyJQCghVc2VyRGF0YRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEioKCWNoYXJhY3RlchgDIAEoCzIXLlByb3RvY29sLkNoYXJhY3RlckRhdGEilAEKCFJvb21EYXRhEgoKAmlkGAEgASgFEg8KB293bmVySWQYAiABKAkSDAoEbmFtZRgDIAEoCRISCgptYXhVc2VyTnVtGAQgASgFEiYKBXN0YXRlGAUgASgOMhcuUHJvdG9jb2wuUm9vbVN0YXRlVHlwZRIhCgV1c2VycxgGIAMoCzISLlByb3RvY29sLlVzZXJEYXRhIj8KDUNoYXJhY3RlckRhdGESLgoNY2hhcmFjdGVyVHlwZRgBIAEoDjIXLlByb3RvY29sLkNoYXJhY3RlclR5cGUiLQoHUG9zSW5mbxIMCgR1dWlkGAEgASgJEgkKAXgYAiABKAISCQoBeRgDIAEoAiJ3Cg5HYW1lUGxheWVyRGF0YRIjCghwb3NpdGlvbhgBIAEoCzIRLlByb3RvY29sLlBvc0luZm8SEAoIbmlja25hbWUYAiABKAkSLgoNY2hhcmFjdGVyVHlwZRgDIAEoDjIXLlByb3RvY29sLkNoYXJhY3RlclR5cGUiMgoJRXJyb3JEYXRhEhQKDHJlc3BvbnNlQ29kZRgBIAEoBRIPCgdtZXNzYWdlGAIgASgJYgZwcm90bzM", [file_enum]);
 
 /**
  * @generated from message Protocol.BaseData
@@ -226,12 +226,17 @@ export const CharacterDataSchema: GenMessage<CharacterData> = /*@__PURE__*/
  */
 export type PosInfo = Message<"Protocol.PosInfo"> & {
   /**
-   * @generated from field: float x = 1;
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * @generated from field: float x = 2;
    */
   x: number;
 
   /**
-   * @generated from field: float y = 2;
+   * @generated from field: float y = 3;
    */
   y: number;
 };
@@ -242,6 +247,35 @@ export type PosInfo = Message<"Protocol.PosInfo"> & {
  */
 export const PosInfoSchema: GenMessage<PosInfo> = /*@__PURE__*/
   messageDesc(file_struct, 6);
+
+/**
+ * @generated from message Protocol.GamePlayerData
+ */
+export type GamePlayerData = Message<"Protocol.GamePlayerData"> & {
+  /**
+   * @generated from field: Protocol.PosInfo position = 1;
+   */
+  position?: PosInfo;
+
+  /**
+   * @generated from field: string nickname = 2;
+   */
+  nickname: string;
+
+  /**
+   *  string status = 4; // 예: "moving", "attacking", "idle"
+   *
+   * @generated from field: Protocol.CharacterType characterType = 3;
+   */
+  characterType: CharacterType;
+};
+
+/**
+ * Describes the message Protocol.GamePlayerData.
+ * Use `create(GamePlayerDataSchema)` to create a new message.
+ */
+export const GamePlayerDataSchema: GenMessage<GamePlayerData> = /*@__PURE__*/
+  messageDesc(file_struct, 7);
 
 /**
  * @generated from message Protocol.ErrorData
@@ -267,5 +301,5 @@ export type ErrorData = Message<"Protocol.ErrorData"> & {
  * Use `create(ErrorDataSchema)` to create a new message.
  */
 export const ErrorDataSchema: GenMessage<ErrorData> = /*@__PURE__*/
-  messageDesc(file_struct, 7);
+  messageDesc(file_struct, 8);
 

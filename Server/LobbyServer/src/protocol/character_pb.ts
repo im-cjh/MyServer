@@ -4,7 +4,7 @@
 
 import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
 import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
-import type { CharacterData } from "./struct_pb";
+import type { PosInfo } from "./struct_pb";
 import { file_struct } from "./struct_pb";
 import type { CardType } from "./enum_pb";
 import { file_enum } from "./enum_pb";
@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file character.proto.
  */
 export const file_character: GenFile = /*@__PURE__*/
-  fileDesc("Cg9jaGFyYWN0ZXIucHJvdG8SCFByb3RvY29sIjEKGUMyQl9Qb3NpdGlvblVwZGF0ZVJlcXVlc3QSCQoBeBgBIAEoARIJCgF5GAIgASgBIlUKHkIyQ19Qb3NpdGlvblVwZGF0ZU5vdGlmaWNhdGlvbhIzChJjaGFyYWN0ZXJQb3NpdGlvbnMYASADKAsyFy5Qcm90b2NvbC5DaGFyYWN0ZXJEYXRhIjoKEkMyQl9Vc2VDYXJkUmVxdWVzdBIkCghjYXJkVHlwZRgBIAEoDjISLlByb3RvY29sLkNhcmRUeXBlIiwKF0IyQ19Vc2VDYXJkTm90aWZpY2F0aW9uEhEKCWlzU3VjY2VzcxgBIAEoCGIGcHJvdG8z", [file_struct, file_enum]);
+  fileDesc("Cg9jaGFyYWN0ZXIucHJvdG8SCFByb3RvY29sIlAKGUMyQl9Qb3NpdGlvblVwZGF0ZVJlcXVlc3QSIwoIcG9zSW5mb3MYASABKAsyES5Qcm90b2NvbC5Qb3NJbmZvEg4KBnJvb21JZBgCIAEoBSJFCh5CMkNfUG9zaXRpb25VcGRhdGVOb3RpZmljYXRpb24SIwoIcG9zSW5mb3MYASABKAsyES5Qcm90b2NvbC5Qb3NJbmZvIjoKEkMyQl9Vc2VDYXJkUmVxdWVzdBIkCghjYXJkVHlwZRgBIAEoDjISLlByb3RvY29sLkNhcmRUeXBlIiwKF0IyQ19Vc2VDYXJkTm90aWZpY2F0aW9uEhEKCWlzU3VjY2VzcxgBIAEoCGIGcHJvdG8z", [file_struct, file_enum]);
 
 /**
  * 캐릭터 위치 동기화
@@ -23,14 +23,14 @@ export const file_character: GenFile = /*@__PURE__*/
  */
 export type C2B_PositionUpdateRequest = Message<"Protocol.C2B_PositionUpdateRequest"> & {
   /**
-   * @generated from field: double x = 1;
+   * @generated from field: Protocol.PosInfo posInfos = 1;
    */
-  x: number;
+  posInfos?: PosInfo;
 
   /**
-   * @generated from field: double y = 2;
+   * @generated from field: int32 roomId = 2;
    */
-  y: number;
+  roomId: number;
 };
 
 /**
@@ -47,9 +47,9 @@ export const C2B_PositionUpdateRequestSchema: GenMessage<C2B_PositionUpdateReque
  */
 export type B2C_PositionUpdateNotification = Message<"Protocol.B2C_PositionUpdateNotification"> & {
   /**
-   * @generated from field: repeated Protocol.CharacterData characterPositions = 1;
+   * @generated from field: Protocol.PosInfo posInfos = 1;
    */
-  characterPositions: CharacterData[];
+  posInfos?: PosInfo;
 };
 
 /**

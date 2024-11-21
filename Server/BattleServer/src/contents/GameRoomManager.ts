@@ -1,13 +1,14 @@
 import { create, fromBinary, toBinary } from '@bufbuild/protobuf';
-import { LobbySession } from 'src/network/LobbySession';
+import { LobbySession } from 'src/main/sessions/LobbySession';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
 import { ePacketId } from 'ServerCore/network/PacketId';
 import { CustomError } from 'ServerCore/utils/error/CustomError';
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
-import { BattleSession } from 'src/network/BattleSession';
-import { GameRoom } from '../models/GameRoom';
-import { GamePlayer } from '../models/GamePlayer';
+import { BattleSession } from 'src/main/sessions/BattleSession';
 import { B2L_CreateGameRoomResponeSchema, L2B_CreateGameRoomRequestSchema } from 'src/protocol/room_pb';
+import { GameRoom } from './GameRoom';
+import { GamePlayer } from './GamePlayer';
+import { C2B_PositionUpdateRequest, C2B_PositionUpdateRequestSchema } from 'src/protocol/character_pb';
 
 const MAX_ROOMS_SIZE: number = 10000;
 
@@ -96,17 +97,17 @@ class GameRoomManager {
     [이동 동기화]
 ---------------------------------------------*/
   public moveHandler(buffer: Buffer, session: BattleSession) {
-    //console.log('moveHandler');
+    console.log('moveHandler');
 
-    // const packet = fromBinary(C2B_MoveSchema, buffer);
+    const packet: C2B_PositionUpdateRequest = fromBinary(C2B_PositionUpdateRequestSchema, buffer);
 
-    // const room = this.rooms.get(packet.roomId);
-    // if (room == undefined) {
-    //   console.log('유효하지 않은 roomId');
-    //   throw new CustomError(ErrorCodes.SOCKET_ERROR, '유효하지 않은 roomId');
-    // }
+    const room = this.rooms.get(packet.roomId);
+    if (room == undefined) {
+      console.log('유효하지 않은 roomId');
+      throw new CustomError(ErrorCodes.SOCKET_ERROR, '유효하지 않은 roomId');
+    }
 
-    // room.handleMove(buffer);
+    room.handleMove(packet, session);
   }
   /*---------------------------------------------
     [방 ID 해제]
