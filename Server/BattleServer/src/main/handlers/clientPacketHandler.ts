@@ -1,9 +1,9 @@
 import { Socket } from 'node:net';
 import defaultHandler from 'ServerCore/handlers/default.handler';
-import { LobbySession } from 'src/main/sessions/LobbySession';
+import { LobbySession } from 'src/main/sessions/lobbySession';
 import { ePacketId } from 'ServerCore/network/PacketId';
-import { BattleSession } from 'src/main/sessions/BattleSession';
-import { gameRoomManager } from 'src/contents/GameRoomManager';
+import { BattleSession } from 'src/main/sessions/battleSession';
+import { gameRoomManager } from 'src/contents/gameRoomManager';
 
 type PacketHandler = (buffer: Buffer, session: BattleSession) => void;
 

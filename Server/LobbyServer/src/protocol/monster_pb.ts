@@ -4,13 +4,15 @@
 
 import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
 import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
+import type { PosInfo } from "./struct_pb";
+import { file_struct } from "./struct_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file monster.proto.
  */
 export const file_monster: GenFile = /*@__PURE__*/
-  fileDesc("Cg1tb25zdGVyLnByb3RvEghQcm90b2NvbCIZChdDMkJfU3Bhd25Nb25zdGVyUmVxdWVzdCJEChhCMkNfU3Bhd25Nb25zdGVyUmVzcG9uc2USEQoJbW9uc3RlcklkGAEgASgFEhUKDW1vbnN0ZXJOdW1iZXIYAiABKAUiSAocUzJCX1NwYXduTW9uc3Rlck5vdGlmaWNhdGlvbhIRCgltb25zdGVySWQYASABKAUSFQoNbW9uc3Rlck51bWJlchgCIAEoBSJDCh1CMlNfTW9uc3RlckF0dGFja1Rvd2VyUmVxdWVzdBIRCgltb25zdGVySWQYASABKAUSDwoHdG93ZXJJZBgCIAEoBSJICh1TMkJfVXBkYXRlVG93ZXJIUE5vdGlmaWNhdGlvbhIPCgd0b3dlcklkGAEgASgFEhYKDnVwZGF0ZWRUb3dlckhQGAIgASgFIi4KHEIyU19Nb25zdGVyQXR0YWNrQmFzZVJlcXVlc3QSDgoGZGFtYWdlGAEgASgFIiwKF0MyQl9Nb25zdGVyRGVhdGhSZXF1ZXN0EhEKCW1vbnN0ZXJJZBgBIAEoBSIxChxCMkNfTW9uc3RlckRlYXRoTm90aWZpY2F0aW9uEhEKCW1vbnN0ZXJJZBgBIAEoBWIGcHJvdG8z");
+  fileDesc("Cg1tb25zdGVyLnByb3RvEghQcm90b2NvbCIZChdDMkJfU3Bhd25Nb25zdGVyUmVxdWVzdCJEChhCMkNfU3Bhd25Nb25zdGVyUmVzcG9uc2USEQoJbW9uc3RlcklkGAEgASgFEhUKDW1vbnN0ZXJOdW1iZXIYAiABKAUiWAocUzJCX1NwYXduTW9uc3Rlck5vdGlmaWNhdGlvbhIjCghwb3NJbmZvcxgBIAEoCzIRLlByb3RvY29sLlBvc0luZm8SEwoLcHJlZmFiSW5kZXgYAiABKAUiQwodQjJTX01vbnN0ZXJBdHRhY2tUb3dlclJlcXVlc3QSEQoJbW9uc3RlcklkGAEgASgFEg8KB3Rvd2VySWQYAiABKAUiSAodUzJCX1VwZGF0ZVRvd2VySFBOb3RpZmljYXRpb24SDwoHdG93ZXJJZBgBIAEoBRIWCg51cGRhdGVkVG93ZXJIUBgCIAEoBSIuChxCMlNfTW9uc3RlckF0dGFja0Jhc2VSZXF1ZXN0Eg4KBmRhbWFnZRgBIAEoBSIsChdDMkJfTW9uc3RlckRlYXRoUmVxdWVzdBIRCgltb25zdGVySWQYASABKAUiMQocQjJDX01vbnN0ZXJEZWF0aE5vdGlmaWNhdGlvbhIRCgltb25zdGVySWQYASABKAViBnByb3RvMw", [file_struct]);
 
 /**
  * @generated from message Protocol.C2B_SpawnMonsterRequest
@@ -52,14 +54,14 @@ export const B2C_SpawnMonsterResponseSchema: GenMessage<B2C_SpawnMonsterResponse
  */
 export type S2B_SpawnMonsterNotification = Message<"Protocol.S2B_SpawnMonsterNotification"> & {
   /**
-   * @generated from field: int32 monsterId = 1;
+   * @generated from field: Protocol.PosInfo posInfos = 1;
    */
-  monsterId: number;
+  posInfos?: PosInfo;
 
   /**
-   * @generated from field: int32 monsterNumber = 2;
+   * @generated from field: int32 prefabIndex = 2;
    */
-  monsterNumber: number;
+  prefabIndex: number;
 };
 
 /**

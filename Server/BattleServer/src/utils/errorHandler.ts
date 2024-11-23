@@ -1,11 +1,11 @@
 import { Socket } from 'net';
 import { create } from '@bufbuild/protobuf';
-import { LobbySession } from 'src/main/sessions/LobbySession';
+import { LobbySession } from 'src/main/sessions/lobbySession';
 
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
 import { ePacketId } from 'ServerCore/network/PacketId';
-import { BattleSession } from 'src/main/sessions/BattleSession';
+import { BattleSession } from 'src/main/sessions/battleSession';
 import { ErrorData, ErrorDataSchema } from 'src/protocol/struct_pb';
 import { ResponseUtils } from './responseUtils';
 

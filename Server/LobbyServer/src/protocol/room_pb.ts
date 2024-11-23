@@ -188,8 +188,6 @@ export const L2B_GameStartRequestSchema: GenMessage<L2B_GameStartRequest> = /*@_
  */
 export type B2C_GameStartNotification = Message<"Protocol.B2C_GameStartNotification"> & {
   /**
-   * UserData를 wrapping한 새로운 struct 필요할 듯
-   *
    * @generated from field: repeated Protocol.GamePlayerData playerDatas = 1;
    */
   playerDatas: GamePlayerData[];

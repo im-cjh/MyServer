@@ -1,13 +1,13 @@
 import { create, fromBinary, toBinary } from '@bufbuild/protobuf';
-import { LobbySession } from 'src/main/sessions/LobbySession';
+import { LobbySession } from 'src/main/sessions/lobbySession';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
 import { ePacketId } from 'ServerCore/network/PacketId';
 import { CustomError } from 'ServerCore/utils/error/CustomError';
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
-import { BattleSession } from 'src/main/sessions/BattleSession';
+import { BattleSession } from 'src/main/sessions/battleSession';
 import { B2L_CreateGameRoomResponeSchema, L2B_CreateGameRoomRequestSchema } from 'src/protocol/room_pb';
-import { GameRoom } from './GameRoom';
-import { GamePlayer } from './GamePlayer';
+import { GameRoom } from './gameRoom';
+import { GamePlayer } from './gamePlayer';
 import { C2B_PositionUpdateRequest, C2B_PositionUpdateRequestSchema } from 'src/protocol/character_pb';
 
 const MAX_ROOMS_SIZE: number = 10000;
@@ -97,7 +97,6 @@ class GameRoomManager {
     [이동 동기화]
 ---------------------------------------------*/
   public moveHandler(buffer: Buffer, session: BattleSession) {
-    console.log('moveHandler');
 
     const packet: C2B_PositionUpdateRequest = fromBinary(C2B_PositionUpdateRequestSchema, buffer);
 

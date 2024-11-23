@@ -1,13 +1,14 @@
 import { create, fromBinary, toBinary } from '@bufbuild/protobuf';
 import { ePacketId } from 'ServerCore/network/PacketId';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
-import { BattleSession } from 'src/main/sessions/BattleSession';
-import { LobbySession } from 'src/main/sessions/LobbySession';
-import { GamePlayer } from './GamePlayer';
+import { BattleSession } from 'src/main/sessions/battleSession';
+import { LobbySession } from 'src/main/sessions/lobbySession';
+import { GamePlayer } from './gamePlayer';
 import { RESPONSE_SUCCESS_CODE } from 'ServerCore/config/config';
 import { B2C_GameStartNotification, B2C_GameStartNotificationSchema, B2C_JoinRoomRequestSchema } from 'src/protocol/room_pb';
 import { GamePlayerData, GamePlayerDataSchema, PosInfoSchema } from 'src/protocol/struct_pb';
 import { B2C_PositionUpdateNotification, B2C_PositionUpdateNotificationSchema, C2B_PositionUpdateRequest } from 'src/protocol/character_pb';
+import { MonsterManager } from './monsters/monsterManager';
 
 export class GameRoom {
   /*---------------------------------------------
@@ -16,7 +17,7 @@ export class GameRoom {
   private id: number;
   private users: Array<GamePlayer>;
   private maxPlayerCount: number;
-
+  private monsterManager: MonsterManager;
   /*---------------------------------------------
     [생성자]
 ---------------------------------------------*/
@@ -24,6 +25,7 @@ export class GameRoom {
     this.users = new Array();
     this.id = id;
     this.maxPlayerCount = maxPlayerCount;
+    this.monsterManager = new MonsterManager(this);
   }
 
 /*---------------------------------------------
@@ -31,7 +33,7 @@ export class GameRoom {
   // 1. 방이 가득 찼는지 확인
   // 2. 유저 추가
   // 3. 해당 유저에게 B2C_JoinRoomResponse 패킷 전송
-  // 4. 모든 인원이 들어왔다면 B2C_GameStart 패킷 전송
+  // 4. 모든 인원이 들어왔다면 B2C_GameStartNotification 패킷 전송
 ---------------------------------------------*/
 public enterRoom(player: GamePlayer) {
   console.log('enterRoom');
@@ -142,11 +144,8 @@ public enterRoom(player: GamePlayer) {
     [이동 동기화]
 ---------------------------------------------*/
   public handleMove(clientPacket: C2B_PositionUpdateRequest, session: BattleSession) {
-    console.log('handleMove');
 
     //TODO 위치 검증 필요
-
-
     const packet: B2C_PositionUpdateNotification = create(B2C_PositionUpdateNotificationSchema, {
       posInfos: create(PosInfoSchema, {
         uuid: session.getId(),

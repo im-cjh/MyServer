@@ -263,8 +263,6 @@ export type GamePlayerData = Message<"Protocol.GamePlayerData"> & {
   nickname: string;
 
   /**
-   *  string status = 4; // 예: "moving", "attacking", "idle"
-   *
    * @generated from field: Protocol.CharacterType characterType = 3;
    */
   characterType: CharacterType;

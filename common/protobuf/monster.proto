@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package Protocol;
 
+import "struct.proto";
+
 message C2B_SpawnMonsterRequest {
 }
 
@@ -11,8 +13,8 @@ message B2C_SpawnMonsterResponse {
 }
 
 message S2B_SpawnMonsterNotification {
-    int32 monsterId = 1;
-    int32 monsterNumber = 2;
+    PosInfo posInfos = 1;
+    int32 prefabIndex = 2;
 }
 
 message B2S_MonsterAttackTowerRequest {

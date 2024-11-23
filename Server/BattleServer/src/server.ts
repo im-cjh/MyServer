@@ -1,7 +1,7 @@
 import net, { Server, Socket } from 'net';
 import { v4 as uuidv4 } from 'uuid';
-import { BattleSession } from './main/sessions/BattleSession';
-import { LobbySession } from './main/sessions/LobbySession';
+import { BattleSession } from './main/sessions/battleSession';
+import { LobbySession } from './main/sessions/lobbySession';
 import { battleConfig } from './config/config';
 import { SessionManager } from 'ServerCore/network/SessionManager';
 import { onConnection } from './main/handlers/commonPacketHandler';

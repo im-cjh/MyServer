@@ -1,4 +1,4 @@
-import { BattleSession } from 'src/main/sessions/BattleSession';
+import { BattleSession } from 'src/main/sessions/battleSession';
 import { GamePlayerData } from 'src/protocol/struct_pb';
 
 export class GamePlayer {
