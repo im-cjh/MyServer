@@ -7,7 +7,7 @@ import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
 import { BattleSession } from 'src/main/sessions/battleSession';
 import { B2L_CreateGameRoomResponeSchema, L2B_CreateGameRoomRequestSchema } from 'src/protocol/room_pb';
 import { GameRoom } from './gameRoom';
-import { GamePlayer } from './gamePlayer';
+import { GamePlayer } from '../gameObjects/gamePlayer';
 import { C2B_PositionUpdateRequest, C2B_PositionUpdateRequestSchema } from 'src/protocol/character_pb';
 
 const MAX_ROOMS_SIZE: number = 10000;

@@ -5,6 +5,7 @@ import { LobbySession } from './main/sessions/lobbySession';
 import { battleConfig } from './config/config';
 import { SessionManager } from 'ServerCore/network/SessionManager';
 import { onConnection } from './main/handlers/commonPacketHandler';
+import { assetManager } from './utils/assetManager';
 
 const server: Server = net.createServer(onConnection);
 /*---------------------------------------------
@@ -19,6 +20,7 @@ lobbySession.connectLobbyServer();
 const initServer = async () => {
   try {
     //await testAllConnections(pools);
+    await assetManager.loadGameAssets();
     // 다음 작업
   } catch (error: any) {
     console.error(error.message);

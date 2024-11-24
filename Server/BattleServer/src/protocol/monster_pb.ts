@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file monster.proto.
  */
 export const file_monster: GenFile = /*@__PURE__*/
-  fileDesc("Cg1tb25zdGVyLnByb3RvEghQcm90b2NvbCIZChdDMkJfU3Bhd25Nb25zdGVyUmVxdWVzdCJEChhCMkNfU3Bhd25Nb25zdGVyUmVzcG9uc2USEQoJbW9uc3RlcklkGAEgASgFEhUKDW1vbnN0ZXJOdW1iZXIYAiABKAUiWAocUzJCX1NwYXduTW9uc3Rlck5vdGlmaWNhdGlvbhIjCghwb3NJbmZvcxgBIAEoCzIRLlByb3RvY29sLlBvc0luZm8SEwoLcHJlZmFiSW5kZXgYAiABKAUiQwodQjJTX01vbnN0ZXJBdHRhY2tUb3dlclJlcXVlc3QSEQoJbW9uc3RlcklkGAEgASgFEg8KB3Rvd2VySWQYAiABKAUiSAodUzJCX1VwZGF0ZVRvd2VySFBOb3RpZmljYXRpb24SDwoHdG93ZXJJZBgBIAEoBRIWCg51cGRhdGVkVG93ZXJIUBgCIAEoBSIuChxCMlNfTW9uc3RlckF0dGFja0Jhc2VSZXF1ZXN0Eg4KBmRhbWFnZRgBIAEoBSIsChdDMkJfTW9uc3RlckRlYXRoUmVxdWVzdBIRCgltb25zdGVySWQYASABKAUiMQocQjJDX01vbnN0ZXJEZWF0aE5vdGlmaWNhdGlvbhIRCgltb25zdGVySWQYASABKAViBnByb3RvMw", [file_struct]);
+  fileDesc("Cg1tb25zdGVyLnByb3RvEghQcm90b2NvbCIZChdDMkJfU3Bhd25Nb25zdGVyUmVxdWVzdCJVChxCMkNfU3Bhd25Nb25zdGVyTm90aWZpY2F0aW9uEiMKCHBvc0luZm9zGAEgASgLMhEuUHJvdG9jb2wuUG9zSW5mbxIQCghwcmVmYWJJZBgCIAEoCSJDCh1DMkJfTW9uc3RlckF0dGFja1Rvd2VyUmVxdWVzdBIRCgltb25zdGVySWQYASABKAUSDwoHdG93ZXJJZBgCIAEoBSJICh1TMkJfVXBkYXRlVG93ZXJIUE5vdGlmaWNhdGlvbhIPCgd0b3dlcklkGAEgASgFEhYKDnVwZGF0ZWRUb3dlckhQGAIgASgFIi4KHEIyU19Nb25zdGVyQXR0YWNrQmFzZVJlcXVlc3QSDgoGZGFtYWdlGAEgASgFIiwKF0MyQl9Nb25zdGVyRGVhdGhSZXF1ZXN0EhEKCW1vbnN0ZXJJZBgBIAEoBSIxChxCMkNfTW9uc3RlckRlYXRoTm90aWZpY2F0aW9uEhEKCW1vbnN0ZXJJZBgBIAEoBWIGcHJvdG8z", [file_struct]);
 
 /**
  * @generated from message Protocol.C2B_SpawnMonsterRequest
@@ -28,53 +28,31 @@ export const C2B_SpawnMonsterRequestSchema: GenMessage<C2B_SpawnMonsterRequest> 
   messageDesc(file_monster, 0);
 
 /**
- * @generated from message Protocol.B2C_SpawnMonsterResponse
+ * @generated from message Protocol.B2C_SpawnMonsterNotification
  */
-export type B2C_SpawnMonsterResponse = Message<"Protocol.B2C_SpawnMonsterResponse"> & {
-  /**
-   * @generated from field: int32 monsterId = 1;
-   */
-  monsterId: number;
-
-  /**
-   * @generated from field: int32 monsterNumber = 2;
-   */
-  monsterNumber: number;
-};
-
-/**
- * Describes the message Protocol.B2C_SpawnMonsterResponse.
- * Use `create(B2C_SpawnMonsterResponseSchema)` to create a new message.
- */
-export const B2C_SpawnMonsterResponseSchema: GenMessage<B2C_SpawnMonsterResponse> = /*@__PURE__*/
-  messageDesc(file_monster, 1);
-
-/**
- * @generated from message Protocol.S2B_SpawnMonsterNotification
- */
-export type S2B_SpawnMonsterNotification = Message<"Protocol.S2B_SpawnMonsterNotification"> & {
+export type B2C_SpawnMonsterNotification = Message<"Protocol.B2C_SpawnMonsterNotification"> & {
   /**
    * @generated from field: Protocol.PosInfo posInfos = 1;
    */
   posInfos?: PosInfo;
 
   /**
-   * @generated from field: int32 prefabIndex = 2;
+   * @generated from field: string prefabId = 2;
    */
-  prefabIndex: number;
+  prefabId: string;
 };
 
 /**
- * Describes the message Protocol.S2B_SpawnMonsterNotification.
- * Use `create(S2B_SpawnMonsterNotificationSchema)` to create a new message.
+ * Describes the message Protocol.B2C_SpawnMonsterNotification.
+ * Use `create(B2C_SpawnMonsterNotificationSchema)` to create a new message.
  */
-export const S2B_SpawnMonsterNotificationSchema: GenMessage<S2B_SpawnMonsterNotification> = /*@__PURE__*/
-  messageDesc(file_monster, 2);
+export const B2C_SpawnMonsterNotificationSchema: GenMessage<B2C_SpawnMonsterNotification> = /*@__PURE__*/
+  messageDesc(file_monster, 1);
 
 /**
- * @generated from message Protocol.B2S_MonsterAttackTowerRequest
+ * @generated from message Protocol.C2B_MonsterAttackTowerRequest
  */
-export type B2S_MonsterAttackTowerRequest = Message<"Protocol.B2S_MonsterAttackTowerRequest"> & {
+export type C2B_MonsterAttackTowerRequest = Message<"Protocol.C2B_MonsterAttackTowerRequest"> & {
   /**
    * @generated from field: int32 monsterId = 1;
    */
@@ -87,11 +65,11 @@ export type B2S_MonsterAttackTowerRequest = Message<"Protocol.B2S_MonsterAttackT
 };
 
 /**
- * Describes the message Protocol.B2S_MonsterAttackTowerRequest.
- * Use `create(B2S_MonsterAttackTowerRequestSchema)` to create a new message.
+ * Describes the message Protocol.C2B_MonsterAttackTowerRequest.
+ * Use `create(C2B_MonsterAttackTowerRequestSchema)` to create a new message.
  */
-export const B2S_MonsterAttackTowerRequestSchema: GenMessage<B2S_MonsterAttackTowerRequest> = /*@__PURE__*/
-  messageDesc(file_monster, 3);
+export const C2B_MonsterAttackTowerRequestSchema: GenMessage<C2B_MonsterAttackTowerRequest> = /*@__PURE__*/
+  messageDesc(file_monster, 2);
 
 /**
  * @generated from message Protocol.S2B_UpdateTowerHPNotification
@@ -113,7 +91,7 @@ export type S2B_UpdateTowerHPNotification = Message<"Protocol.S2B_UpdateTowerHPN
  * Use `create(S2B_UpdateTowerHPNotificationSchema)` to create a new message.
  */
 export const S2B_UpdateTowerHPNotificationSchema: GenMessage<S2B_UpdateTowerHPNotification> = /*@__PURE__*/
-  messageDesc(file_monster, 4);
+  messageDesc(file_monster, 3);
 
 /**
  * @generated from message Protocol.B2S_MonsterAttackBaseRequest
@@ -130,7 +108,7 @@ export type B2S_MonsterAttackBaseRequest = Message<"Protocol.B2S_MonsterAttackBa
  * Use `create(B2S_MonsterAttackBaseRequestSchema)` to create a new message.
  */
 export const B2S_MonsterAttackBaseRequestSchema: GenMessage<B2S_MonsterAttackBaseRequest> = /*@__PURE__*/
-  messageDesc(file_monster, 5);
+  messageDesc(file_monster, 4);
 
 /**
  * @generated from message Protocol.C2B_MonsterDeathRequest
@@ -147,7 +125,7 @@ export type C2B_MonsterDeathRequest = Message<"Protocol.C2B_MonsterDeathRequest"
  * Use `create(C2B_MonsterDeathRequestSchema)` to create a new message.
  */
 export const C2B_MonsterDeathRequestSchema: GenMessage<C2B_MonsterDeathRequest> = /*@__PURE__*/
-  messageDesc(file_monster, 6);
+  messageDesc(file_monster, 5);
 
 /**
  * @generated from message Protocol.B2C_MonsterDeathNotification
@@ -164,5 +142,5 @@ export type B2C_MonsterDeathNotification = Message<"Protocol.B2C_MonsterDeathNot
  * Use `create(B2C_MonsterDeathNotificationSchema)` to create a new message.
  */
 export const B2C_MonsterDeathNotificationSchema: GenMessage<B2C_MonsterDeathNotification> = /*@__PURE__*/
-  messageDesc(file_monster, 7);
+  messageDesc(file_monster, 6);
 

@@ -3,29 +3,38 @@ import { ePacketId } from 'ServerCore/network/PacketId';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
 import { BattleSession } from 'src/main/sessions/battleSession';
 import { LobbySession } from 'src/main/sessions/lobbySession';
-import { GamePlayer } from './gamePlayer';
+import { GamePlayer } from '../gameObjects/gamePlayer';
 import { RESPONSE_SUCCESS_CODE } from 'ServerCore/config/config';
 import { B2C_GameStartNotification, B2C_GameStartNotificationSchema, B2C_JoinRoomRequestSchema } from 'src/protocol/room_pb';
-import { GamePlayerData, GamePlayerDataSchema, PosInfoSchema } from 'src/protocol/struct_pb';
+import { GamePlayerData, GamePlayerDataSchema, PosInfoSchema, Vec2 } from 'src/protocol/struct_pb';
 import { B2C_PositionUpdateNotification, B2C_PositionUpdateNotificationSchema, C2B_PositionUpdateRequest } from 'src/protocol/character_pb';
-import { MonsterManager } from './monsters/monsterManager';
+import { Tile, Tilemap } from './timemap';
+import { Utils } from 'ServerCore/utils/Utils';
+import { BattleUtils } from 'src/utils/battleUtils';
+import { Monster } from '../gameObjects/monster';
+import { B2C_SpawnMonsterNotification, B2C_SpawnMonsterNotificationSchema } from 'src/protocol/monster_pb';
+import { MonsterSpawner } from './monsterSpawner';
 
 export class GameRoom {
   /*---------------------------------------------
     [멤버 변수]
 ---------------------------------------------*/
   private id: number;
-  private users: Array<GamePlayer>;
+  private users: Map<string, GamePlayer>;
+  private monsters: Map<string, Monster>;
   private maxPlayerCount: number;
-  private monsterManager: MonsterManager;
+  //private tilemap: Tilemap;
+  private monsterSpawner: MonsterSpawner;
   /*---------------------------------------------
     [생성자]
 ---------------------------------------------*/
   constructor(id: number, maxPlayerCount: number) {
-    this.users = new Array();
     this.id = id;
+    this.users = new Map<string, GamePlayer>();
+    this.monsters = new Map<string, Monster>();
     this.maxPlayerCount = maxPlayerCount;
-    this.monsterManager = new MonsterManager(this);
+    
+    this.monsterSpawner = new MonsterSpawner(this);
   }
 
 /*---------------------------------------------
@@ -47,14 +56,14 @@ public enterRoom(player: GamePlayer) {
   ];
 
   // 1. 방이 가득 찼는지 확인
-  if (this.users.length >= this.maxPlayerCount) {
+  if (this.users.size >= this.maxPlayerCount) {
     console.error(`방이 가득 찼습니다. (방 ID: ${this.id})`);
     return;
-  }
+}
 
   // 2. 유저 추가
-  this.users.push(player);
-  console.log(`유저가 방에 입장했습니다. 현재 인원: ${this.users.length}/${this.maxPlayerCount}`);
+  this.users.set(player.session.getId(), player);
+  console.log(`유저가 방에 입장했습니다. 현재 인원: ${this.users.size}/${this.maxPlayerCount}`);
 
   // 3. 해당 유저에게 B2C_JoinRoomResponse 패킷 전송
   const enterRoomPacket = create(B2C_JoinRoomRequestSchema, {
@@ -69,16 +78,23 @@ public enterRoom(player: GamePlayer) {
   );
   player.session.send(enterRoomBuffer);
 
-  // 4. 모든 인원이 들어왔다면 B2C_GameStart 패킷 전송
-  if (this.users.length === this.maxPlayerCount) {
+// 4. 모든 인원이 들어왔다면 B2C_GameStart 패킷 전송
+  if (this.users.size === this.maxPlayerCount) {
     console.log('모든 유저가 입장하였습니다. 게임을 시작합니다.');
 
     // 유저의 스폰 위치 부여
     const playerDatas: GamePlayerData[] = [];
+    const spawnCoordinates = [
+      { x: 3, y: 4 },
+      { x: 4, y: 4 },
+      { x: 3, y: 3 },
+      { x: 4, y: 3 }
+    ];
 
-    for (let i = 0; i < this.users.length; i++) {
-      console.log("i+1회 호출");
-      const user = this.users[i];
+    // Map의 값(value)을 배열로 변환하여 순회
+    const usersArray = Array.from(this.users.values());
+    for (let i = 0; i < usersArray.length; i++) {
+      const user = usersArray[i];
       const spawnPoint = spawnCoordinates[i]; // 좌표 목록에서 순차적으로 할당
 
       const posInfo = create(PosInfoSchema, {
@@ -105,11 +121,14 @@ public enterRoom(player: GamePlayer) {
       gameStartPacket,
       B2C_GameStartNotificationSchema,
       ePacketId.B2C_GameStartNotification,
-      player.session.getNextSequence()
+      usersArray[0].session.getNextSequence() // 첫 번째 유저의 시퀀스
     );
 
     // 모든 유저에게 전송
     this.broadcast(gameStartBuffer);
+
+    //몬스터 생성
+    this.OnGameStart();
   }
 }
 
@@ -162,10 +181,70 @@ public enterRoom(player: GamePlayer) {
 ---------------------------------------------*/
   private broadcast(buffer: Buffer) {
     for (const user of this.users) {
-      user.session.send(buffer);
+      user[1].session.send(buffer);
     }
   }
   /*---------------------------------------------
-    [getter]
+    [길찾기]
 ---------------------------------------------*/
+  public FindPath(src: Vec2, dest: Vec2, path: Array<Vec2>, maxDepth: number = 10){
+
+  }
+
+  public CanGo(pos: Vec2){
+    // let tile: Tile | null = this.tilemap.GetTile(pos);
+    // if(tile == null){
+    //   return false;
+    // }
+  }
+
+/*---------------------------------------------
+    [Getter]
+---------------------------------------------*/
+  public findObject(uuid: string): GamePlayer | Monster | null {
+    return this.users.get(uuid) || this.monsters.get(uuid) || null;
+  }
+
+/*---------------------------------------------
+    [오브젝트 제거]
+---------------------------------------------*/
+  public removeObject(uuid: string): void{
+    const object: GamePlayer | Monster | null = this.findObject(uuid);
+
+    if(object instanceof GamePlayer){
+      this.users.delete(uuid);
+    }
+    else if(object instanceof Monster){
+      this.monsters.delete(uuid);
+    }
+  }
+
+  /*---------------------------------------------
+    [오브젝트 추가]
+    - 대상: 몬스터, 타워, 투사체
+    - 주의: 플레이어는 enterRoom으로 추가하기 
+---------------------------------------------*/
+  public addObject(object: Monster): void{
+    if(object instanceof Monster){
+      this.monsters.set(object.getId(), object);
+      console.log("몬스터 생성 ㅇㅇ");
+
+      const packet: B2C_SpawnMonsterNotification = create(B2C_SpawnMonsterNotificationSchema, {
+        posInfos: object.getPos(),
+        prefabId: object.getPrefabId()
+      });
+
+      const sendBuffer: Buffer = PacketUtils.SerializePacket<B2C_SpawnMonsterNotification>(packet, B2C_SpawnMonsterNotificationSchema, ePacketId.B2C_SpawnMonsterNotification, 0);
+      this.broadcast(sendBuffer);
+    }
+  }
+
+  public getMonsterCount(){
+    return this.monsters.size;
+  }
+
+  private OnGameStart(){
+    console.log("OnGameStart Called");
+    this.monsterSpawner.startSpawning(0);
+  }
 }

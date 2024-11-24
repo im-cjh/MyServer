@@ -1,13 +1,13 @@
 import { Socket } from 'net';
 import { CustomError } from 'ServerCore/utils/error/CustomError';
 import { ErrorCodes } from 'ServerCore/utils/error/ErrorCodes';
-import { GamePlayer } from '../../contents/gamePlayer';
+import { GamePlayer } from '../../contents/gameObjects/gamePlayer';
 import { C2B_Init, C2B_InitSchema } from 'src/protocol/init_pb';
 import { ePacketId } from 'ServerCore/network/PacketId';
 import { config } from 'ServerCore/config/config';
 import { PacketHeader } from 'ServerCore/network/PacketHeader';
 import { PacketUtils } from 'ServerCore/utils/parser/ParserUtils';
-import { gameRoomManager } from 'src/contents/gameRoomManager';
+import { gameRoomManager } from 'src/contents/rooms/gameRoomManager';
 import { fromBinary } from '@bufbuild/protobuf';
 import { BattleSession } from '../sessions/battleSession';
 import { sessionManager } from 'src/server';

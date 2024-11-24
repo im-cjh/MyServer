@@ -1,5 +1,3 @@
-import fs from "fs";
-import path, { resolve } from "path";
 import camelCase from "lodash/camelCase.js";
 import { config } from "../config/config";
 
@@ -10,23 +8,6 @@ import { config } from "../config/config";
    
 ---------------------------------------------*/
 export class Utils {
-  static basePath: string = path.join(__dirname, "../../Assets");
-  static protoPath: string = path.join(__dirname, "../protobuf");
-
-  /*---------------------------------------------
-    [비동기 파일 읽기]
----------------------------------------------*/
-  static async readFileAsync(filename: string): Promise<any> {
-    return new Promise((resolve, reject) => {
-      fs.readFile(path.join(Utils.basePath, filename), "utf8", (err, data) => {
-        if (err) {
-          reject(err);
-          return;
-        }
-        resolve(JSON.parse(data));
-      });
-    });
-  }
 
   /*---------------------------------------------
     [snake_case -> camelCase 변환]
@@ -65,5 +46,9 @@ export class Utils {
     const seconds: string = String(date.getSeconds()).padStart(2, "0");
 
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  }
+
+  static clamp(v: number, lo: number, hi: number){
+    return  Math.max(lo, Math.min(v, hi))
   }
 }

@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file struct.proto.
  */
 export const file_struct: GenFile = /*@__PURE__*/
-  fileDesc("CgxzdHJ1Y3QucHJvdG8SCFByb3RvY29sIiUKCEJhc2VEYXRhEgoKAmhwGAEgASgFEg0KBW1heEhwGAIgASgFIlYKCVRvd2VyRGF0YRIPCgd0b3dlcklkGAEgASgFEhMKC3Rvd2VyTnVtYmVyGAIgASgFEiMKCHRvd2VyUG9zGAMgASgLMhEuUHJvdG9jb2wuUG9zSW5mbyJtCgtNb25zdGVyRGF0YRIRCgltb25zdGVySWQYASABKAUSFQoNbW9uc3Rlck51bWJlchgCIAEoBRINCgVsZXZlbBgDIAEoBRIlCgptb25zdGVyUG9zGAQgASgLMhEuUHJvdG9jb2wuUG9zSW5mbyJQCghVc2VyRGF0YRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEioKCWNoYXJhY3RlchgDIAEoCzIXLlByb3RvY29sLkNoYXJhY3RlckRhdGEilAEKCFJvb21EYXRhEgoKAmlkGAEgASgFEg8KB293bmVySWQYAiABKAkSDAoEbmFtZRgDIAEoCRISCgptYXhVc2VyTnVtGAQgASgFEiYKBXN0YXRlGAUgASgOMhcuUHJvdG9jb2wuUm9vbVN0YXRlVHlwZRIhCgV1c2VycxgGIAMoCzISLlByb3RvY29sLlVzZXJEYXRhIj8KDUNoYXJhY3RlckRhdGESLgoNY2hhcmFjdGVyVHlwZRgBIAEoDjIXLlByb3RvY29sLkNoYXJhY3RlclR5cGUiLQoHUG9zSW5mbxIMCgR1dWlkGAEgASgJEgkKAXgYAiABKAISCQoBeRgDIAEoAiJ3Cg5HYW1lUGxheWVyRGF0YRIjCghwb3NpdGlvbhgBIAEoCzIRLlByb3RvY29sLlBvc0luZm8SEAoIbmlja25hbWUYAiABKAkSLgoNY2hhcmFjdGVyVHlwZRgDIAEoDjIXLlByb3RvY29sLkNoYXJhY3RlclR5cGUiMgoJRXJyb3JEYXRhEhQKDHJlc3BvbnNlQ29kZRgBIAEoBRIPCgdtZXNzYWdlGAIgASgJYgZwcm90bzM", [file_enum]);
+  fileDesc("CgxzdHJ1Y3QucHJvdG8SCFByb3RvY29sIiUKCEJhc2VEYXRhEgoKAmhwGAEgASgFEg0KBW1heEhwGAIgASgFIlYKCVRvd2VyRGF0YRIPCgd0b3dlcklkGAEgASgFEhMKC3Rvd2VyTnVtYmVyGAIgASgFEiMKCHRvd2VyUG9zGAMgASgLMhEuUHJvdG9jb2wuUG9zSW5mbyJtCgtNb25zdGVyRGF0YRIRCgltb25zdGVySWQYASABKAUSFQoNbW9uc3Rlck51bWJlchgCIAEoBRINCgVsZXZlbBgDIAEoBRIlCgptb25zdGVyUG9zGAQgASgLMhEuUHJvdG9jb2wuUG9zSW5mbyJQCghVc2VyRGF0YRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEioKCWNoYXJhY3RlchgDIAEoCzIXLlByb3RvY29sLkNoYXJhY3RlckRhdGEilAEKCFJvb21EYXRhEgoKAmlkGAEgASgFEg8KB293bmVySWQYAiABKAkSDAoEbmFtZRgDIAEoCRISCgptYXhVc2VyTnVtGAQgASgFEiYKBXN0YXRlGAUgASgOMhcuUHJvdG9jb2wuUm9vbVN0YXRlVHlwZRIhCgV1c2VycxgGIAMoCzISLlByb3RvY29sLlVzZXJEYXRhIj8KDUNoYXJhY3RlckRhdGESLgoNY2hhcmFjdGVyVHlwZRgBIAEoDjIXLlByb3RvY29sLkNoYXJhY3RlclR5cGUiLQoHUG9zSW5mbxIMCgR1dWlkGAEgASgJEgkKAXgYAiABKAISCQoBeRgDIAEoAiIcCgRWZWMyEgkKAXgYASABKAISCQoBeRgCIAEoAiJ3Cg5HYW1lUGxheWVyRGF0YRIjCghwb3NpdGlvbhgBIAEoCzIRLlByb3RvY29sLlBvc0luZm8SEAoIbmlja25hbWUYAiABKAkSLgoNY2hhcmFjdGVyVHlwZRgDIAEoDjIXLlByb3RvY29sLkNoYXJhY3RlclR5cGUiMgoJRXJyb3JEYXRhEhQKDHJlc3BvbnNlQ29kZRgBIAEoBRIPCgdtZXNzYWdlGAIgASgJYgZwcm90bzM", [file_enum]);
 
 /**
  * @generated from message Protocol.BaseData
@@ -249,6 +249,28 @@ export const PosInfoSchema: GenMessage<PosInfo> = /*@__PURE__*/
   messageDesc(file_struct, 6);
 
 /**
+ * @generated from message Protocol.Vec2
+ */
+export type Vec2 = Message<"Protocol.Vec2"> & {
+  /**
+   * @generated from field: float x = 1;
+   */
+  x: number;
+
+  /**
+   * @generated from field: float y = 2;
+   */
+  y: number;
+};
+
+/**
+ * Describes the message Protocol.Vec2.
+ * Use `create(Vec2Schema)` to create a new message.
+ */
+export const Vec2Schema: GenMessage<Vec2> = /*@__PURE__*/
+  messageDesc(file_struct, 7);
+
+/**
  * @generated from message Protocol.GamePlayerData
  */
 export type GamePlayerData = Message<"Protocol.GamePlayerData"> & {
@@ -273,7 +295,7 @@ export type GamePlayerData = Message<"Protocol.GamePlayerData"> & {
  * Use `create(GamePlayerDataSchema)` to create a new message.
  */
 export const GamePlayerDataSchema: GenMessage<GamePlayerData> = /*@__PURE__*/
-  messageDesc(file_struct, 7);
+  messageDesc(file_struct, 8);
 
 /**
  * @generated from message Protocol.ErrorData
@@ -299,5 +321,5 @@ export type ErrorData = Message<"Protocol.ErrorData"> & {
  * Use `create(ErrorDataSchema)` to create a new message.
  */
 export const ErrorDataSchema: GenMessage<ErrorData> = /*@__PURE__*/
-  messageDesc(file_struct, 8);
+  messageDesc(file_struct, 9);
 

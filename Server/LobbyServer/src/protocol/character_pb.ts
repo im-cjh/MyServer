@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file character.proto.
  */
 export const file_character: GenFile = /*@__PURE__*/
-  fileDesc("Cg9jaGFyYWN0ZXIucHJvdG8SCFByb3RvY29sImUKGUMyQl9Qb3NpdGlvblVwZGF0ZVJlcXVlc3QSIwoIcG9zSW5mb3MYASABKAsyES5Qcm90b2NvbC5Qb3NJbmZvEg4KBnJvb21JZBgCIAEoBRITCgtwcmVmYWJJbmRleBgDIAEoBSJaCh5CMkNfUG9zaXRpb25VcGRhdGVOb3RpZmljYXRpb24SIwoIcG9zSW5mb3MYASABKAsyES5Qcm90b2NvbC5Qb3NJbmZvEhMKC3ByZWZhYkluZGV4GAIgASgFIjoKEkMyQl9Vc2VDYXJkUmVxdWVzdBIkCghjYXJkVHlwZRgBIAEoDjISLlByb3RvY29sLkNhcmRUeXBlIiwKF0IyQ19Vc2VDYXJkTm90aWZpY2F0aW9uEhEKCWlzU3VjY2VzcxgBIAEoCGIGcHJvdG8z", [file_struct, file_enum]);
+  fileDesc("Cg9jaGFyYWN0ZXIucHJvdG8SCFByb3RvY29sIlAKGUMyQl9Qb3NpdGlvblVwZGF0ZVJlcXVlc3QSIwoIcG9zSW5mb3MYASABKAsyES5Qcm90b2NvbC5Qb3NJbmZvEg4KBnJvb21JZBgCIAEoBSJFCh5CMkNfUG9zaXRpb25VcGRhdGVOb3RpZmljYXRpb24SIwoIcG9zSW5mb3MYASABKAsyES5Qcm90b2NvbC5Qb3NJbmZvIjoKEkMyQl9Vc2VDYXJkUmVxdWVzdBIkCghjYXJkVHlwZRgBIAEoDjISLlByb3RvY29sLkNhcmRUeXBlIiwKF0IyQ19Vc2VDYXJkTm90aWZpY2F0aW9uEhEKCWlzU3VjY2VzcxgBIAEoCGIGcHJvdG8z", [file_struct, file_enum]);
 
 /**
  * 캐릭터 위치 동기화
@@ -31,11 +31,6 @@ export type C2B_PositionUpdateRequest = Message<"Protocol.C2B_PositionUpdateRequ
    * @generated from field: int32 roomId = 2;
    */
   roomId: number;
-
-  /**
-   * @generated from field: int32 prefabIndex = 3;
-   */
-  prefabIndex: number;
 };
 
 /**
@@ -55,11 +50,6 @@ export type B2C_PositionUpdateNotification = Message<"Protocol.B2C_PositionUpdat
    * @generated from field: Protocol.PosInfo posInfos = 1;
    */
   posInfos?: PosInfo;
-
-  /**
-   * @generated from field: int32 prefabIndex = 2;
-   */
-  prefabIndex: number;
 };
 
 /**
